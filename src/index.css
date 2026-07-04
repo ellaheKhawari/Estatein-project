@@ -1,0 +1,40 @@
+@import "tailwindcss";
+@theme {
+    --color-primary: #703bf7;
+    --color-primary-65: #703bf7;
+    --color-secondary: #946cf9;
+    --color-bg: #141414;
+    --color-bg2: #191919;
+    --color-border: #262626;
+    --color-text-myGray: #999999;
+}
+* {
+    font-family: 'Urbanist', sans-serif;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    color: #fff;
+}
+:root {
+    --text-sm:0.775rem;
+    scrollbar-width: thin;
+}
+body {
+    background: var(--color-bg);
+    cursor: default;
+
+
+}
+
+@layer components {
+    .Wrapper {
+        @apply container px-4 md:px-6 lg:px-8 mx-auto;
+    }
+}
+
+.bg-gradient {
+    background: radial-gradient(ellipse at top left, rgba(109, 40, 217, 0.15) 0%, transparent 60%);
+}
+
+.Shadow {
+    box-shadow: 0 0 0 5px rgba(37,37,37,0.4);
+}
