@@ -2,7 +2,6 @@ import sparkles from "../../assets/sparkles.png";
 import type {TitleProps} from "../../types/componentsTypes.ts";
 import Button from "../button";
 
-
 const Title  = ({title , description, buttonProps , sparklesIcons , buttonComponent}:TitleProps) => {
     return (
         <>

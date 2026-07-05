@@ -7,7 +7,6 @@ import {Loader2, Send} from "lucide-react";
 import Title from "../../components/mainTitle";
 import {defaultValues} from "../../data";
 
-
 export const ContactFormSection = () => {
     async function submitContactForm(values: ContactFormValues): Promise<SubmitResult> {
         await new Promise((resolve) =>
@@ -50,7 +49,6 @@ export const ContactFormSection = () => {
                     <p className="font-medium mb-1">Please fix the following:</p>
                     <pre className="text-sm whitespace-pre-wrap">{messages}</pre>
                 </div>,
-               /* {autoClose: 5000 }*/
             );
         }
     };

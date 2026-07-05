@@ -4,14 +4,7 @@ import Button from "../../components/button";
 import {useCallback, useEffect, useState} from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import {ArrowLeft, ChevronLeft, ChevronRight} from "lucide-react";
-
-// ─── Mock Data (40 properties) ───────────────────────────────────────────────
-
-const TITLES = [
-    "How do I search for properties on Estatein?", "What documents do I need to sell my property through Estatein?", "How can I contact an Estatein agent?",
-    "What documents do I need to sell my property through Estatein?", "What documents do I need to sell my property through Estatein?",
-    "How can I contact an Estatein agent/", "How do I search for properties on Estatein?", "What documents do I need to sell my property through Estatein?",
-];
+import {TITLES} from "../../data";
 
 const Properties = (): CardProperty[] =>
     Array.from({length: 10}, (_, i) => ({
@@ -22,14 +15,11 @@ const Properties = (): CardProperty[] =>
     }));
 
 const ALL_PROPERTIES = Properties();
-const CAROUSEL_COUNT = 10; // تعداد کارت‌هایی که در carousel نشون داده میشن
-
-// ─── Property Card ────────────────────────────────────────────────────────────
+const CAROUSEL_COUNT = 10;
 
 const PropertyCard = ({property}: { property: CardProperty }) => (
     <div className="bg-bg border border-border rounded-xl overflow-hidden flex flex-col h-full">
 
-        {/* Content */}
         <div className="p-4 md:p-8 flex flex-col flex-1">
             <h3 className=" font-semibold mb-2 md:mb-3.5 text-xl ">{property.title}</h3>
             <p className="text-text-myGray! text-sm md:text-base mb-4 line-clamp-3">
@@ -39,7 +29,6 @@ const PropertyCard = ({property}: { property: CardProperty }) => (
                 </button>
             </p>
 
-            {/* Price + CTA */}
             <div>
                 <Button
                     text='Read More'
@@ -50,8 +39,6 @@ const PropertyCard = ({property}: { property: CardProperty }) => (
         </div>
     </div>
 );
-
-// ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function FrequentlyAskedQuestionsSection() {
     const [showAll, setShowAll] = useState(false);
@@ -66,8 +53,6 @@ export default function FrequentlyAskedQuestionsSection() {
             "(min-width: 768px)": {slidesToScroll: 1},
         },
     });
-
-    // ─── Navigation ──────────────────────────────────────────────────────────────
 
     const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
     const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
@@ -87,13 +72,10 @@ export default function FrequentlyAskedQuestionsSection() {
 
     const carouselProperties = ALL_PROPERTIES.slice(0, CAROUSEL_COUNT);
 
-    // ─── "View All" Grid ──────────────────────────────────────────────────────────
-
     if (showAll) {
         return (
             <section className=" py-12 ">
                 <div className="Wrapper">
-                    {/* Header */}
 
                     <div className="flex items-start justify-between mb-8">
                         <div>
@@ -110,7 +92,6 @@ export default function FrequentlyAskedQuestionsSection() {
                         />
                     </div>
 
-                    {/* Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
                         {ALL_PROPERTIES.map((p) => (
                             <PropertyCard key={p.id} property={p}/>
@@ -121,13 +102,9 @@ export default function FrequentlyAskedQuestionsSection() {
         );
     }
 
-    // ─── Carousel View ────────────────────────────────────────────────────────────
-
     return (
         <section className='py-12'>
             <div className="Wrapper">
-
-                {/* Header */}
 
                 <Title
                     title='Frequently Asked Questions'
@@ -140,7 +117,6 @@ export default function FrequentlyAskedQuestionsSection() {
                     }}
                 />
 
-                {/* Embla Carousel */}
                 <div className="overflow-hidden" ref={emblaRef}>
                     <div className="flex gap-5">
                         {carouselProperties.map((p) => (
@@ -154,7 +130,6 @@ export default function FrequentlyAskedQuestionsSection() {
                     </div>
                 </div>
 
-                {/* Footer: counter + nav (desktop) | View All + nav (mobile) */}
                 <div className="flex items-center justify-between mt-6">
 
                     {/*View All — mobile*/}
@@ -167,7 +142,6 @@ export default function FrequentlyAskedQuestionsSection() {
                         />
                     </div>
 
-                    {/* Counter */}
                     <p className="hidden md:block text-text-myGray! text-lg">
                         <span className=" font-semibold">
                             {String(currentIndex + 1).padStart(2, "0")}
@@ -175,7 +149,6 @@ export default function FrequentlyAskedQuestionsSection() {
                         of {String(CAROUSEL_COUNT).padStart(2, "0")}
                     </p>
 
-                    {/* Arrows */}
                     <div className="flex items-center gap-2">
                         <button
                             onClick={scrollPrev}

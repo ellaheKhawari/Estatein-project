@@ -1,32 +1,3 @@
-/*import type {FilterSelectProps} from "../../types/componentsTypes.ts";
-import { ChevronDown} from "lucide-react";
-
-export default function SelectionBox({value, onChange, options, placeholder, icon: Icon,}: FilterSelectProps) {
-    return (
-        <div className=" flex items-center border border-border bg-bg focus:border-primary transition-colors hover:border-primary rounded-xl p-2">
-            {Icon && (
-                <Icon className="pointer-events-none z-10 mx-2 " color="#999999"/>
-            )}
-            <select
-                value={value}
-                onChange={e => onChange(e.target.value)}
-                className={`border-l  border-border w-full text-sm md:text-base outline-none appearance-none text-text-myGray! cursor-pointer ${Icon ? "pl-2 pr-3" : "px-3"} `}
-            >
-                {placeholder && <option value="" className="bg-bg text-sm md:text-base border">{placeholder}</option>}
-                {options.map(opt => (
-                    <option key={opt.value} value={opt.value}
-                    className="bg-bg focus:bg-bg selection:bg-bg text-sm md:text-base "
-                    >
-                        {opt.label}
-                    </option>
-                ))}
-            </select>
-            <div className="border border-bg2 rounded-full bg-bg2 p-1">
-                <ChevronDown color="#999999" />
-            </div>
-        </div>
-    )
-}*/
 import { useState, useRef, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import {ChevronDown, Search} from "lucide-react";
@@ -46,7 +17,6 @@ export default function SelectionBox({value, onChange, options, placeholder, ico
         o.label.toLowerCase().includes(search.toLowerCase())
     );
 
-    // محاسبه موقعیت trigger برای نمایش panel دقیقاً زیرش
     const updatePos = useCallback(() => {
         if (!triggerRef.current) return;
         const rect = triggerRef.current.getBoundingClientRect();
@@ -67,7 +37,7 @@ export default function SelectionBox({value, onChange, options, placeholder, ico
         const t = setTimeout(() => searchRef.current?.focus(), 100);
         return () => {
             clearTimeout(t);
-            setSearch("");  // cleanup — وقتی open false میشه اجرا میشه
+            setSearch("");
         };
     }, [open]);
 
@@ -158,12 +128,6 @@ export default function SelectionBox({value, onChange, options, placeholder, ico
                                 }`}
                             >
                                 <span>{opt.label}</span>
-                                {/*{String(value) === String(opt.value) && (
-                                    <svg className="w-4 h-4 text-green-500 flex-shrink-0"
-                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                    </svg>
-                                )}*/}
                             </li>
                         ))
                     )}
@@ -174,7 +138,6 @@ export default function SelectionBox({value, onChange, options, placeholder, ico
 
     return (
         <div className="relative">
-            {/* Trigger */}
             <div
                 ref={triggerRef}
                 onClick={handleOpen}

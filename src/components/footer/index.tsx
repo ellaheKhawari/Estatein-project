@@ -4,7 +4,6 @@ import {Facebook, Instagram, Linkedin, MailPlus, Send, Twitter} from "lucide-rea
 import logo from "../../assets/Logo.png";
 import {footerLinks} from "./footerLinks.ts";
 
-
 const Footer = () => {
     return (
         <section>

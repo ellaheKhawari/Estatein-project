@@ -61,7 +61,6 @@ export const PurchaseForm = () => {
             <div className="rounded-3xl border border-border bg-bg p-6 sm:p-12">
                 <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
 
-                    {/* ─── Row 1: First Name, Last Name, Email, Phone ─── */}
                     <form.Field
                         name="firstName"
                         validators={{ onBlur: ({ value }) => !value.trim() ? "First name is required" : undefined }}
@@ -137,7 +136,6 @@ export const PurchaseForm = () => {
                         )}
                     </form.Field>
 
-                    {/* ─── Row 2: Location, Property Type, Bathrooms, Bedrooms ─── */}
                     <form.Field name="preferredLocation">
                         {field => (
                             <SelectField
@@ -194,7 +192,6 @@ export const PurchaseForm = () => {
                         )}
                     </form.Field>
 
-                    {/* ─── Row 3: Budget (half width) + Preferred Contact Method (half width) ─── */}
                     <form.Field name="budget">
                         {field => (
                             <SelectField
@@ -210,13 +207,13 @@ export const PurchaseForm = () => {
                         )}
                     </form.Field>
 
-                    {/* Preferred Contact Method */}
+
                     <form.Field name="contactMethod">
                         {methodField => (
                             <div className="lg:col-span-2 flex flex-col gap-2">
                                 <label className="text-sm md:text-base font-medium ">Preferred Contact Method</label>
                                 <div className="grid grid-cols-2 gap-3">
-                                    {/* Phone option */}
+
                                     <form.Field name="contactMethodPhone">
                                         {phoneField => (
                                             <div className={`flex items-center gap-2 border rounded-xl bg-bg2 px-4 py-3 cursor-pointer transition-colors ${methodField.state.value === "phone" ? "border-primary" : "border-border"}`}
@@ -237,7 +234,6 @@ export const PurchaseForm = () => {
                                         )}
                                     </form.Field>
 
-                                    {/* Email option */}
                                     <form.Field name="contactMethodEmail">
                                         {emailField => (
                                             <div className={`flex items-center gap-2 border rounded-xl bg-bg2 px-4 py-3 cursor-pointer transition-colors ${methodField.state.value === "email" ? "border-primary" : "border-border"}`}
@@ -262,7 +258,6 @@ export const PurchaseForm = () => {
                         )}
                     </form.Field>
 
-                    {/* ─── Message ─── */}
                     <form.Field
                         name="message"
                         validators={{ onBlur: ({ value }) => !value.trim() ? "Please write a message" : undefined }}
@@ -280,7 +275,6 @@ export const PurchaseForm = () => {
                             />
                         )}
                     </form.Field>
-
 
                     <form.Field
                         name="agree"
@@ -314,7 +308,6 @@ export const PurchaseForm = () => {
                             </div>
                         )}
                     </form.Field>
-
                 </form>
             </div>
         </section>

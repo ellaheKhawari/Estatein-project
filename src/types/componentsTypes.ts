@@ -95,3 +95,8 @@ export interface LearnMoreBoxProps {
     description : string
     onclick?: React.MouseEventHandler<HTMLButtonElement>
 }
+
+export interface FooterLinkProps {
+    title : string
+    links :  { label: string, href:string}[]
+}

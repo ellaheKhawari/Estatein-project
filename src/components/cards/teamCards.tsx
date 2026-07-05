@@ -10,7 +10,6 @@ export const TeamCard =({ member }: { member: TeamMember }) => {
                     alt={member.name}
                     className="w-full h-auto md:h-64 object-cover object-top rounded-lg"
                 />
-                {/* Twitter badge on image */}
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
                     <div className="bg-primary rounded-full px-5 py-2">
                         <Twitter fill="white" color="white"/>

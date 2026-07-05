@@ -1,6 +1,4 @@
 import type {LucideIcon} from "lucide-react";
-import {create} from "zustand";
-import {persist} from "zustand/middleware";
 
 export interface Property {
     id: number;
@@ -33,6 +31,7 @@ export interface Testimonial {
     title: string;
     review: string;
 }
+
 export const fakeTestmonialst: Testimonial[] = [
     { id: 1, name: "Wade Warren", location: "USA, California", avatar: "https://i.pravatar.cc/48?img=1", rating: 5, title: "Exceptional Service!", review: "Our experience with Estatein was outstanding. Their team's dedication and professionalism made finding our dream home a breeze. Highly recommended!" },
     { id: 2, name: "Emelie Thomson", location: "USA, Florida", avatar: "https://i.pravatar.cc/48?img=2", rating: 5, title: "Efficient and Reliable", review: "Estatein provided us with top-notch service. They helped us sell our property quickly and at a great price. We couldn't be happier with the results." },
@@ -71,7 +70,6 @@ export interface ContactFormValues {
     message: string;
     agree: boolean;
 }
-
 
 export interface PurchaseFormValues {
     firstName: string;
@@ -140,7 +138,7 @@ export interface PropertyProps {
     type: string;
     subtitle: string;
     location: string;
-    size: number;       // in sqft
+    size: number;
     buildYear: number;
 }
 
@@ -148,8 +146,8 @@ export interface SearchFilters {
     query: string;
     location: string;
     type: string;
-    priceRange: number;   // index into PRICE_RANGES
-    sizeRange: number;    // index into SIZE_RANGES
+    priceRange: number;
+    sizeRange: number;
     buildYear: string;
 }
 
@@ -178,6 +176,7 @@ export interface AuthState {
     isLoading: boolean;
     error: string | null;
     login: (email: string, password: string) => Promise<void>;
+    register: (name: string, email: string, password: string) => Promise<void>;
     fetchMe: () => Promise<void>;
     logout: () => void;
 }

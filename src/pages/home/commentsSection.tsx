@@ -6,8 +6,6 @@ import { useNavigate } from "react-router-dom";
 import {fakeTestmonialst, type Testimonial} from "../../types/types.ts";
 import Button from "../../components/button";
 
-// ─── Star Rating ──────────────────────────────────────────────────────────────
-
 const StarRating = ({ rating }: { rating: number }) => (
     <div className="flex gap-1.5 mb-4">
         {Array.from({ length: 5 }).map((_, i) => (
@@ -20,8 +18,6 @@ const StarRating = ({ rating }: { rating: number }) => (
         ))}
     </div>
 );
-
-// ─── Testimonial Card ─────────────────────────────────────────────────────────
 
 const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
     <div className=" border border-border rounded-3xl p-5 md:p-10 flex flex-col h-full">
@@ -41,8 +37,6 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
         </div>
     </div>
 );
-
-// ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function CommentsSection() {
     const navigate = useNavigate();
@@ -72,7 +66,6 @@ export default function CommentsSection() {
         <section className="py-12">
             <div className="Wrapper">
 
-                {/* Header */}
                 <Title
                     title='What Our Clients Say'
                     description='Read the success stories and heartfelt testimonials from our valued clients. Discover why they chose Estatein for their real estate needs.'
@@ -84,7 +77,7 @@ export default function CommentsSection() {
                 />
 
 
-                {/* Embla Carousel */}
+
                 <div className="overflow-hidden" ref={emblaRef}>
                     <div className="flex gap-5">
                         {fakeTestmonialst.map((t) => (
@@ -98,9 +91,9 @@ export default function CommentsSection() {
                     </div>
                 </div>
 
-                {/* Footer */}
+
                 <div className="flex items-center justify-between mt-6">
-                    {/* View All — mobile */}
+
 
                     <div className='md:hidden'>
                         <Button
@@ -110,7 +103,7 @@ export default function CommentsSection() {
                         />
                     </div>
 
-                    {/* Counter */}
+
                     <p className="hidden md:block text-text-myGray! text-lg">
                         <span className=" font-semibold">
                             {String(currentIndex + 1).padStart(2, "0")}
@@ -118,7 +111,7 @@ export default function CommentsSection() {
                         of {String(fakeTestmonialst.length).padStart(2, "0")}
                     </p>
 
-                    {/* Arrows */}
+
                     <div className="flex items-center gap-2">
                         <button
                             onClick={scrollPrev}

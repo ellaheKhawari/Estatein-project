@@ -9,7 +9,9 @@ const Home = lazy(() => import("./pages/home/index.tsx"));
 const About = lazy(() => import("./pages/about/index.tsx"));
 const Properties = lazy(() => import("./pages/properties/index.tsx"));
 const Services = lazy(() => import("./pages/services/index.tsx"));
+const PropertyDetails = lazy(() => import("./pages/properties/propertyDetails.tsx"))
 const Login = lazy(() => import("./pages/auth/login.tsx"));
+const Register = lazy(() => import("./pages/auth/register.tsx"));
 const NotFound = lazy(() => import("./pages/notFound/index.tsx"));
 const ConnectSection = lazy(() => import("./pages/contact/index.tsx"));
 const Loading = lazy(() => import("./pages/loading/index.tsx"));
@@ -30,7 +32,8 @@ function App() {
                     </Route>
 
                     <Route path="/login" element={<Login/>}/>
-
+                    <Route path="/register" element={<Register/>}/>
+                    <Route path="/propertyDetails/:id" element={<PropertyDetails/>} />
                     <Route path="*" element={<NotFound/>}/>
 
                 </Routes>

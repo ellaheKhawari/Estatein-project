@@ -9,16 +9,14 @@ import Title from "../../components/mainTitle";
 import sparkles from "../../assets/sparkles.png";
 
 export const GallerySection = () => {
-
     return (
         <section className="Wrapper my-12">
             <div
                 className="p-6 md:p-10 border border-border bg-bg2 overflow-hidden rounded-2xl"
                 style={{backgroundImage: `url(${mainBg})`}}
             >
-                {/* ─── موبایل ─── */}
                 <div className="flex flex-col gap-4 md:hidden">
-                    {/* ردیف 1: دو عکس کنار هم */}
+
                     <div className="grid grid-cols-2 gap-3">
                         <div className="overflow-hidden rounded-2xl">
                             <img src={img1} alt=""
@@ -30,7 +28,7 @@ export const GallerySection = () => {
                         </div>
                     </div>
 
-                    {/* ردیف 2: یه عکس پهن + دو تا نصف */}
+
                     <div className="grid grid-cols-2 gap-3">
                         <div className="overflow-hidden rounded-2xl  ">
                             <img src={img2} alt=""
@@ -49,7 +47,7 @@ export const GallerySection = () => {
 
                     </div>
                     <div className="flex flex-col ">
-                        {/* متن — زیر همه عکس‌ها */}
+
                         <div className="mt-2">
                             <Title
                                 title="Explore Estatein&apos;s World"
@@ -66,10 +64,9 @@ export const GallerySection = () => {
 
                 </div>
 
-                {/* ─── دسکتاپ ─── */}
+
                 <div className="hidden md:flex md:gap-5">
 
-                    {/* ستون چپ: 2 عکس */}
                     <div className="flex flex-col gap-3 flex-1">
                         <div className="overflow-hidden rounded-2xl">
                             <img src={img1} alt=""
@@ -93,7 +90,6 @@ export const GallerySection = () => {
                         </div>
                     </div>
 
-                    {/* ستون راست: 1 بزرگ + 2 کوچک + 1 پهن */}
                     <div className="flex flex-col gap-3 flex-1">
                         <div className="overflow-hidden rounded-2xl">
                             <img src={img3} alt=""
@@ -116,8 +112,6 @@ export const GallerySection = () => {
                     </div>
 
                 </div>
-
-                {/* متن دسکتاپ — بیرون از گرید، زیر همه عکس‌ها */}
             </div>
         </section>
     );

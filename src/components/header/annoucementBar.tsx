@@ -19,7 +19,6 @@ const AnnouncementBar = ()=> {
                         <X color='white' size='14'/>
                     </button>
                 </div>
-                {/*<section className='border border-green-800 '></section>*/}
             </section>
         </section>
     )

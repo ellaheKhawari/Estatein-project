@@ -7,9 +7,9 @@ export const stats = [
 ];
 
 export const TITLES = [
-    "Seaside Serenity Villa", "Metropolitan Haven", "Rustic Retreat Cottage",
-    "Skyline Penthouse", "Garden View Townhouse", "Lakeshore Manor",
-    "Urban Loft Studio", "Hillside Paradise", "Coastal Dream Home", "City Center Flat",
+    "How do I search for properties on Estatein?", "What documents do I need to sell my property through Estatein?", "How can I contact an Estatein agent?",
+    "What documents do I need to sell my property through Estatein?", "What documents do I need to sell my property through Estatein?",
+    "How can I contact an Estatein agent/", "How do I search for properties on Estatein?", "What documents do I need to sell my property through Estatein?",
 ];
 
 export const UNSPLASH_IDS = [

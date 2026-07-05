@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import {Home, SearchX} from 'lucide-react';
 
-
 const NotFound = () => {
     return (
 
@@ -19,7 +18,6 @@ const NotFound = () => {
                     className="pointer-events-none absolute left-1/2 top-1/2 h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-bg2/50  blur-3xl"/>
 
                 <div className="relative z-10 flex flex-col items-center">
-                    {/* Dashed plot boundary with a "for sale" style pin */}
                     <svg viewBox="0 0 200 140" className="h-36 w-56">
                         <rect
                             x="10"

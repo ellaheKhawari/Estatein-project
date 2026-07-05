@@ -58,7 +58,6 @@ export const ClientsSection = () => {
         emblaApi.on("select", onSelect);
         emblaApi.on("reInit", onReInit);
 
-        // مقدار اولیه
         setTimeout(() => {
             setTotalSlides(emblaApi.scrollSnapList().length);
         }, 0);
@@ -80,7 +79,6 @@ export const ClientsSection = () => {
                 buttonComponent={false}
             />
 
-            {/* Embla Viewport */}
             <div className="overflow-hidden mb-4 md:mb-7" ref={emblaRef}>
                 <div className="flex">
                     {clients.map((client) => (
@@ -94,7 +92,6 @@ export const ClientsSection = () => {
                 </div>
             </div>
 
-            {/* Pagination */}
             <div className="flex items-center justify-between px-4">
                 <p className=" text-text-myGray! text-sm md:text-base">
                         <span className=" font-medium ">

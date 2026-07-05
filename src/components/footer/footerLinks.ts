@@ -4,9 +4,9 @@ export const footerLinks : FooterLinkProps[] = [
     {
         title: "Home",
         links: [
-            { label: "Hero Section", href: "#" },
-            { label: "Features", href: "#" },
-            { label: "Properties", href: "#" },
+            { label: "Hero Section", href: "/" },
+            { label: "Features", href: "" },
+            { label: "Properties", href: "/properties" },
             { label: "Testimonials", href: "#" },
             { label: "FAQ's", href: "#" },
         ],
@@ -14,7 +14,7 @@ export const footerLinks : FooterLinkProps[] = [
     {
         title: "About Us",
         links: [
-            { label: "Our Story", href: "#" },
+            { label: "Our Story", href: "/about" },
             { label: "Our Clients", href: "#" },
             { label: "Our Works", href: "#" },
             { label: "How It Works", href: "#" },
@@ -31,7 +31,7 @@ export const footerLinks : FooterLinkProps[] = [
     {
         title: "Services",
         links: [
-            { label: "Valuation Mastery", href: "#" },
+            { label: "Valuation Mastery", href: "/services" },
             { label: "Strategic Marketing", href: "#" },
             { label: "Negotiation Wizardry", href: "#" },
             { label: "Closing Success", href: "#" },
@@ -41,7 +41,7 @@ export const footerLinks : FooterLinkProps[] = [
     {
         title: "Contact Us",
         links: [
-            { label: "Contact Form", href: "#" },
+            { label: "Contact Form", href: "/contact" },
             { label: "Our Offices", href: "#" },
         ]
     }

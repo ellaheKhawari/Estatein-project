@@ -1,5 +1,3 @@
-
-// placeholder images - replace with real imports
 import team1 from "../../assets/team1.png";
 import team2 from "../../assets/team2.png";
 import team3 from "../../assets/team3.png";
@@ -42,14 +40,12 @@ const team: TeamMember[] = [
 export const TeamSection = () => {
     return (
         <section className="Wrapper my-24">
-            {/* Header */}
             <Title
                 title="Meet the Estatein Team"
                 description="At Estatein, our success is driven by the dedication and expertise of our team. Get to know the people behind our mission to make your real estate dreams a reality."
                 buttonComponent={false}
             />
 
-            {/* Grid */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 {team.map((member) => (
                     <TeamCard key={member.name} member={member}/>

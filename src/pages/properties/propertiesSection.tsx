@@ -1,27 +1,15 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
-import type {PropertyProps, Props, SearchFilters} from "../../types/types.ts";
-import { PRICE_RANGES, PROPERTY_DATA, SIZE_RANGES, UNSPLASH_IDS } from "../../data";
+import type { PropertyProps, Props, SearchFilters } from "../../types/types.ts";
+import { PRICE_RANGES, SIZE_RANGES } from "../../data";
 import { PropertyCard } from "../../components/cards/propertyCard.tsx";
 import { SkeletonCard } from "../../components/cards/skeletonCard.tsx";
 import Title from "../../components/mainTitle";
 import { EmptyState } from "../../data/extraConsts.tsx";
 import sparkles from "../../assets/sparkles.png";
 import Button from "../../components/button";
-
-function buildUnsplashUrl(photoId: string): string {
-    return `https://images.unsplash.com/photo-${photoId}?w=800&q=80&fit=crop&auto=format`;
-}
-
-async function fetchProperties(): Promise<PropertyProps[]> {
-    await new Promise(resolve => setTimeout(resolve, 600));
-    return PROPERTY_DATA.map((item, i) => ({
-        id: i + 1,
-        ...item,
-        image: buildUnsplashUrl(UNSPLASH_IDS[i % UNSPLASH_IDS.length]),
-    }));
-}
+import { usePropertyStore } from "../../store/usePropertyStore.ts";
 
 function applyFilters(properties: PropertyProps[], filters: SearchFilters): PropertyProps[] {
     return properties.filter(p => {
@@ -51,38 +39,25 @@ function applyFilters(properties: PropertyProps[], filters: SearchFilters): Prop
                 if (p.buildYear !== Number(filters.buildYear)) return false;
             }
         }
-
         return true;
     });
 }
 
-export default function PropertiesSection({ filters, onLoadingChange,loading }: Props) {
-
-    const [allProperties, setAllProperties] = useState<PropertyProps[]>([]);
-    const [error, setError] = useState<string | null>(null);
+export default function PropertiesSection({ filters, onLoadingChange, loading }: Props) {
     const [showAll, setShowAll] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [emblaRef, emblaApi] = useEmblaCarousel({loop: false, dragFree: true, align: "start", slidesToScroll: 1,});
+    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, dragFree: true, align: "start", slidesToScroll: 1 });
+
+    const { properties: allProperties, error, loadProperties } = usePropertyStore();
+
     const filtered = applyFilters(allProperties, filters);
     const carouselProperties = filtered.slice(0, 40);
 
-
     useEffect(() => {
-        let cancelled = false;
         onLoadingChange(true);
-        fetchProperties()
-            .then(data => {
-                if (cancelled) return;
-                setAllProperties(data);
-                onLoadingChange(false);
-            })
-            .catch(err => {
-                if (cancelled) return;
-                setError((err as Error).message);
-                onLoadingChange(false);
-            });
-        return () => { cancelled = true; };
-    }, [onLoadingChange]);
+        loadProperties().finally(() => onLoadingChange(false));
+    }, [onLoadingChange, loadProperties]);
+
     useEffect(() => {
         if (!emblaApi) return;
         emblaApi.scrollTo(0);
@@ -120,16 +95,12 @@ export default function PropertiesSection({ filters, onLoadingChange,loading }: 
                 <div className="flex items-center justify-between mb-6 relative">
                     <div>
                         <div className="flex items-center gap-2 mb-2 ">
-                            <img src={sparkles} alt="Sparkles" className="md:w-20 h-auto"/>
+                            <img src={sparkles} alt="Sparkles" className="md:w-20 h-auto" />
                         </div>
                         <h2 className=" text-3xl md:4xl font-bold">All Properties</h2>
                         <p className="text-text-myGray! text-sm md:text-base mt-2 max-w-lg">
                             {filtered.length} of {allProperties.length} properties
                         </p>
-                        {/*<h2 className="text-3xl font-bold">All Properties</h2>
-                        <p className="text-text-myGray text-sm mt-1">
-                            {filtered.length} of {allProperties.length} properties
-                        </p>*/}
                     </div>
                     <div className=" absolute top-2/4 right-0">
                         <Button
@@ -143,16 +114,20 @@ export default function PropertiesSection({ filters, onLoadingChange,loading }: 
 
                 {loading ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                        {Array.from({length: 8}).map((_, i) => <SkeletonCard key={i}/>)}
+                        {Array.from({ length: 8 }).map((_, i) => <SkeletonCard key={i} />)}
                     </div>
                 ) : filtered.length === 0 ? (
-                    <EmptyState onClear={clearFilters}/>
+                    <EmptyState onClear={clearFilters} />
                 ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                        {filtered.map((p, index)  => <PropertyCard  key={p.id}
-                                                          property={p}
-                                                          allProperties={carouselProperties}
-                                                          index={index}/>)}
+                        {filtered.map((p, index) => (
+                            <PropertyCard
+                                key={p.id}
+                                property={p}
+                                allProperties={carouselProperties}
+                                index={index}
+                            />
+                        ))}
                     </div>
                 )}
             </section>
@@ -168,7 +143,7 @@ export default function PropertiesSection({ filters, onLoadingChange,loading }: 
                     text: "View All Properties",
                     color: "secondary",
                     onClick: () => setShowAll(true),
-            }}
+                }}
             />
             {loading ? (
                 <div className="flex gap-5 overflow-hidden">
@@ -184,10 +159,11 @@ export default function PropertiesSection({ filters, onLoadingChange,loading }: 
                 <div className="overflow-hidden" ref={emblaRef}>
                     <div className="flex gap-5">
                         {carouselProperties.map((p, index) => (
-                            <div key={p.id}
-                                 className="flex-none w-[85%] sm:w-[45%] md:w-[30%] lg:w-[calc(29.333%-14px)] xl:w-[calc(27.333%-14px)]">
+                            <div
+                                key={p.id}
+                                className="flex-none w-[85%] sm:w-[45%] md:w-[30%] lg:w-[calc(29.333%-14px)] xl:w-[calc(27.333%-14px)]"
+                            >
                                 <PropertyCard
-                                    key={p.id}
                                     property={p}
                                     allProperties={carouselProperties}
                                     index={index}
@@ -206,13 +182,6 @@ export default function PropertiesSection({ filters, onLoadingChange,loading }: 
                         onClick={() => setShowAll(true)}
                     />
                 </div>
-               {/* <button
-                    onClick={() => setShowAll(true)}
-                    className="md:hidden border border-primary px-4 py-2 rounded-xl text-sm"
-                >
-                    View All Properties
-                </button>*/}
-
                 {!loading && carouselProperties.length > 0 && (
                     <p className="hidden md:block text-text-myGray! text-lg">
                         <span className="font-semibold ">

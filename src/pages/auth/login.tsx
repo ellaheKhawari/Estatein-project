@@ -26,7 +26,6 @@ export default function Login() {
 
     return (
         <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-primary/5 px-6 py-12">
-            {/* Blueprint grid backdrop */}
             <div
                 className="pointer-events-none absolute inset-0 opacity-[0.06]"
                 style={{
@@ -39,7 +38,6 @@ export default function Login() {
             <div className="pointer-events-none absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-bg blur-3xl" />
 
             <div className="relative z-10 grid w-full max-w-5xl grid-cols-1 overflow-hidden rounded-3xl border border-border bg-[#16181D]/80 shadow-2xl backdrop-blur md:grid-cols-2">
-                {/* Left: architectural illustration panel */}
                 <div className="relative hidden flex-col justify-between bg-bg p-10 md:flex">
                     <div className="flex items-center gap-2 ">
                         <Building2 className="h-6 w-6 text-primary!" strokeWidth={1.5} />
@@ -58,7 +56,6 @@ export default function Login() {
                     </div>
                 </div>
 
-                {/* Right: form */}
                 <div className="flex flex-col justify-center p-8 sm:p-12 bg-bg">
                     <div className="mb-8 flex items-center gap-2 md:hidden">
                         <Building2 className="h-6 w-6 text-primary!" strokeWidth={1.5} />
@@ -134,7 +131,7 @@ export default function Login() {
 
                     <p className="mt-8 text-center text-sm md:text-base text-text-myGray!">
                         {'Don\'t have an account? '}
-                        <Link to="/signup" className="font-medium underline">
+                        <Link to="/register" className="font-medium underline">
                             Sign up
                         </Link>
                     </p>
@@ -144,7 +141,6 @@ export default function Login() {
     );
 }
 
-// Signature element: a blueprint of a building that "draws itself" on load
 function BlueprintBuilding() {
     return (
         <svg viewBox="0 0 240 200" className="h-40 w-full" fill="none">
@@ -182,10 +178,8 @@ function BlueprintBuilding() {
                     />
                 ))}
             </g>
-            <style>{`
-        @keyframes draw { to { stroke-dashoffset: 0; } }
-        @keyframes fadeInWindow { to { opacity: 0.7; } }
-      `}</style>
+            <style>{` @keyframes draw { to { stroke-dashoffset: 0; } } @keyframes fadeInWindow { to { opacity: 0.7; } }`}
+            </style>
         </svg>
     );
 }

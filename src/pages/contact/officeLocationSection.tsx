@@ -1,8 +1,6 @@
 import type {Office} from "../../types/types.ts";
 import { Mail, MapPin, Phone} from "lucide-react";
 import Title from "../../components/mainTitle";
-import Button from "../../components/button";
-
 
 export const OfficeLocationSection = () => {
 

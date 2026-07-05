@@ -1,14 +1,6 @@
-/**
- * Usage in App.tsx:
- *
- *   <Suspense fallback={<Loading />}>
- *     ...routes...
- *   </Suspense>
- */
 export default function Loading() {
     return (
         <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#0D0B14]">
-            {/* Ambient glow, same as the auth page */}
             <div
                 className="pointer-events-none absolute -top-40 -right-32 h-[26rem] w-[26rem] rounded-full bg-[#703BF7]/20 blur-[100px] animate-glow-pulse"/>
             <div
@@ -17,7 +9,6 @@ export default function Loading() {
             />
 
             <div className="relative z-10 flex flex-col items-center gap-3">
-                {/* A villa that draws itself with a single continuous line, on a loop */}
                 <svg viewBox="0 0 200 160" className="h-36 w-44">
                     <defs>
                         <linearGradient id="villaGradient" x1="0" y1="0" x2="200" y2="160">
@@ -33,19 +24,14 @@ export default function Loading() {
                         fill="none"
                         className="animate-villa-fade"
                     >
-                        {/* ground line */}
                         <path d="M20,140 L180,140" strokeDasharray="160" className="animate-draw-ground"/>
-                        {/* flat-roof side wing */}
                         <path d="M25,140 L25,120 L60,120" strokeDasharray="55" className="animate-draw-wing"/>
-                        {/* main pitched-roof house */}
                         <path
                             d="M60,140 L60,90 L100,55 L140,90 L140,140"
                             strokeDasharray="207"
                             className="animate-draw-house"
                         />
-                        {/* door */}
                         <path d="M90,140 L90,112 L110,112 L110,140" strokeDasharray="76" className="animate-draw-door"/>
-                        {/* windows */}
                         <path d="M68,105 L82,105 L82,119 L68,119 Z" strokeDasharray="56"
                               className="animate-draw-window1"/>
                         <path d="M118,105 L132,105 L132,119 L118,119 Z" strokeDasharray="56"
