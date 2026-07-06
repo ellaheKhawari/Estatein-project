@@ -1,8 +1,26 @@
-import type {ContactFormValues, PropertyProps, PurchaseFormValues, SearchFilters, TeamMember} from "../types/types.ts";
+import type {
+    ContactFormValues,
+    PropertyProps,
+    PurchaseFormValues,
+    SearchFilters,
+    servicesCardProps,
+    TeamMember
+} from "../types/types.ts";
 import team1 from "../assets/team1.png";
 import team2 from "../assets/team2.png";
 import team3 from "../assets/team3.png";
 import team4 from "../assets/team4.png";
+import icon1 from "../assets/icon1.png";
+import icon2 from "../assets/icon2.png";
+import icon3 from "../assets/icon3.png";
+import icon4 from "../assets/icon4.png";
+
+export const services :servicesCardProps[] = [
+    { label: "Find Your Dream Home", src: icon1, href:"/properties"},
+    { label: "Unlock Property Value", src: icon2, href:""},
+    { label: "Effortless Property Management", src: icon3, href:"/services"},
+    { label: "Smart Investments, Informed Decisions", src: icon4, href:""},
+];
 
 export const stats = [
     { label: "Happy Clients", value: "200+" },

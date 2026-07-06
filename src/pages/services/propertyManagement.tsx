@@ -8,7 +8,7 @@ import {LearnMoreBox} from "../../components/boxes/learnMoreBox.tsx";
 
 export const PropertyManagement = () => {
     return (
-        <section className="Wrapper my-12 md:my-24 flex gap-4 flex-wrap">
+        <section className="Wrapper my-12 md:my-24 flex gap-4 flex-wrap" >
             <Title
                 title="Effortless Property Management"
                 description="Owning a property should be a pleasure, not a hassle. Estatein's Property Management Service takes the stress out of property ownership, offering comprehensive solutions tailored to your needs. Explore the categories below to see how we can make property management effortless for you"
