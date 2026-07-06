@@ -38,7 +38,7 @@ function App() {
 
                 </Routes>
             </Suspense>
-            <Toaster position="top-right" toastOptions={{
+            <Toaster position="top-center" toastOptions={{
                 classNames: {
                     toast: 'bg-[#141414]! border-border! text-xl',
                 },

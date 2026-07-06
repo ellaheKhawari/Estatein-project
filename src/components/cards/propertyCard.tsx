@@ -1,6 +1,7 @@
 import type { PropertyProps } from "../../types/types.ts";
 import { Icon1, Icon2, Icon3 } from "../icons";
 import { useNavigate } from "react-router-dom";
+import Button from "../button";
 
 export const PropertyCard = ({ property }: { property: PropertyProps; allProperties: PropertyProps[]; index: number; }) => {
     const navigate = useNavigate();
@@ -42,17 +43,19 @@ export const PropertyCard = ({ property }: { property: PropertyProps; allPropert
                 </div>
             </div>
 
-            <div className="flex items-center justify-between mt-auto pt-3">
+            <div className="flex items-center justify-between mt-3 md:mt-6 gap-3">
                 <div>
-                    <p className="text-text-myGray! font-medium">Price</p>
-                    <p className="font-semibold text-lg md:text-xl">{property.price}</p>
+                    <p className="text-text-myGray! text-sm md:text-base font-medium">Price</p>
+                    <p className="font-semibold text-base md:text-xl">{property.price}</p>
                 </div>
-                <button
-                    onClick={goToDetails}
-                    className="bg-primary font-semibold px-3 py-2 rounded-lg text-sm md:text-base hover:opacity-90 transition-opacity"
-                >
-                    View Property Details
-                </button>
+                <div>
+                    <Button
+                        type="button"
+                        onClick={goToDetails}
+                        text="View Property Details"
+                        color="primary"
+                    />
+                </div>
             </div>
         </div>
     );

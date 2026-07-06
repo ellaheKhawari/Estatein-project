@@ -3,8 +3,17 @@ import footerBg from "../../assets/bg3.png";
 import {Facebook, Instagram, Linkedin, MailPlus, Send, Twitter} from "lucide-react";
 import logo from "../../assets/Logo.png";
 import {footerLinks} from "./footerLinks.ts";
+import { useState } from "react";
+import {toast} from "sonner";
 
 const Footer = () => {
+
+    const [email, setEmail] = useState('');
+    const handleSend = () => {
+        setEmail('');
+        toast('Your email has been sent.');
+    };
+
     return (
         <section>
             <section
@@ -37,13 +46,17 @@ const Footer = () => {
                         <a href="#">
                             <img src={logo} alt="Estatein logo" className="w-24 lg:w-28 h-auto mb-5"/>
                         </a>
-                        <div className='border border-border rounded-lg flex gap-1.5 items-center py-3 px-3 '>
-                            <MailPlus color='#999999' size='18'/>
+                        <div className='border border-border rounded-lg flex gap-1.5 items-center py-3 px-3'>
+                            <MailPlus color='#999999' size='18' />
                             <input
-                                className='focus:border-none focus:outline-none min-w-5/6 selection:bg-none selection:bg-bg focus:bg-bg '
-                                type="email" placeholder="Enter Your Email"/>
-                            <button className="send-btn">
-                                <Send color="#999999" size='24'/>
+                                className='focus:border-none focus:outline-none min-w-5/6 selection:bg-none selection:bg-bg focus:bg-bg'
+                                type="email"
+                                placeholder="Enter Your Email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <button className="send-btn" onClick={handleSend}>
+                                <Send color="#999999" size='24' />
                             </button>
                         </div>
                     </div>
@@ -74,7 +87,7 @@ const Footer = () => {
                         reserved.
                         <a href="#" className="md:pl-4 ">Terms & Conditions</a>
                     </p>
-                    <div className="flex gap-3 rounded-3xl bg-bg p-2 border-border border  ">
+                    <div className="flex gap-3 rounded-3xl bg-bg p-2 border-border border mb-4 md:my-4 ">
                         {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
                             <button
                                 key={i}
