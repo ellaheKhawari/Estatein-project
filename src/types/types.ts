@@ -49,7 +49,7 @@ export interface servicesCardProps {
     src:string;
     label: string;
     value?: string;
-    href: string
+    href?: string
 }
 
 export interface Office {
