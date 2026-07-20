@@ -1,73 +1,91 @@
-# React + TypeScript + Vite
+<div align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🏡 Estatein — Real Estate Platform
 
-Currently, two official plugins are available:
+**A modern real estate marketing & listings site built with React 19 and TypeScript**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Featuring a property catalog with rich search & filtering, a full set of informational pages, and a mock authentication flow.
 
-## React Compiler
+[**🔗 Live Demo**](https://estatein-project.netlify.app/)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+</div>
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## About
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Estatein is a front-end showcase project for a real estate business. It brings together a home page, a properties catalog with detailed search and filtering, dedicated pages for services, contact, and about, a mock login/register flow, and proper handling of loading and not-found states — everything you'd expect from a real, production-style marketing site, built entirely on the front end.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+There is **no real backend** — all data (properties, services, users) is mocked, so the project can be cloned and explored instantly with no setup beyond installing dependencies.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## ✨ Features
+
+- 🏠 **Home page** — landing/marketing page introducing the platform
+- 🔐 **Authentication** — mock login and register flow
+- 🏘️ **Properties page** — the core of the app, with:
+    - Search functionality
+    - Filtering by multiple property specifications (type, price range, and other criteria)
+    - A dedicated details view per property
+- 🛠️ **Services page** — presents the services offered by the platform
+- ✉️ **Contact page** — includes a contact form for inquiries
+- ℹ️ **About page** — information about the platform/company
+- 🛒 Purchase / inquiry flows integrated into relevant sections and pages, depending on context
+- ⏳ **Loading states** — dedicated loading UI while content is prepared
+- 🚫 **Not Found (404) page** — custom page for unmatched routes
+- 📱💻 **Responsive design** — optimized for **mobile and laptop/desktop** screen sizes
+
+## 🛠 Tech Stack
+
+| Category | Technology |
+|---|---|
+| Core | React 19, TypeScript, Vite |
+| Styling | Tailwind CSS v4 (`@tailwindcss/vite`) |
+| Routing | React Router v7 |
+| State management | Zustand |
+| Data fetching / caching | TanStack React Query |
+| Forms | TanStack Form |
+| UI Components | MUI (`@mui/material`), Radix UI primitives, `@mui/x-data-grid` |
+| Styling utilities | `class-variance-authority`, `clsx`, `tailwind-merge` |
+| Theming | `next-themes` |
+| Notifications | Sonner, React Toastify |
+| Carousel | `embla-carousel-react` |
+| Icons | Lucide React |
+| Linting | ESLint + `typescript-eslint` |
+
+## 🚀 Getting Started
+
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Then open the printed local URL (usually `http://localhost:5173`).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Build for production:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
+npm run preview
 ```
+
+Lint the project:
+
+```bash
+npm run lint
+```
+
+## 🔑 Authentication
+
+There is no real backend. Login and registration are fully mocked on the client side, so you can explore the authenticated parts of the app by simply registering (or logging in) with any credentials — no real account or server is required.
+
+## 🏘️ Properties, Search & Filtering
+
+The properties page is the most developed part of the app: users can search for properties and narrow results down using multiple specification-based filters (such as property type, price, and other criteria), making it easy to find matching listings within the mock dataset.
+
+## 📱 Responsive Design
+
+The interface is fully responsive across **mobile phones and laptop/desktop** screen sizes.
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
