@@ -6,7 +6,7 @@
 
 Featuring a property catalog with rich search & filtering, a full set of informational pages, and a mock authentication flow.
 
-[**🔗 Live Demo**](https://estatein-project.netlify.app/)
+[**🔗 Live Demo**](https://estatein-project.ellahe-khawari.workers.dev)
 
 </div>
 
